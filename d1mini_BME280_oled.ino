@@ -53,7 +53,7 @@ void setup() {
   oled.clear(ALL);  // Clear the library's display buffer
   oled.setFontType(0); // set font type 0, please see declaration in SFE_MicroOLED.cpp
   oled.setCursor(0, 0); // points cursor to x=0 y=0
-  oled.println("try WiFi");
+  oled.println("WiFi conn");
   oled.display();   // Display what's in the buffer (splashscreen)
 
   wifi_init(gv_hostname);
@@ -87,20 +87,17 @@ void loop() {
   if (gv_TickMeas == true) {
 
     do_sensor();
+
+    display_data();
     gv_TickMeas = false;
 
   }
 
   delay(500);
 
-
 }
 
-void do_sensor() {
-
-  get_bme280();
-
-
+void display_data(){
   oled.clear(PAGE);  // Clear the buffer
   oled.setFontType(0); // set font type 0, please see declaration in SFE_MicroOLED.cpp
   oled.setCursor(0, 0); // points cursor to x=0 y=0
@@ -119,6 +116,12 @@ void do_sensor() {
   oled.println(" hPa");
 
   oled.display(); // Draw the memory buffer
+}
+
+void do_sensor() {
+
+  get_bme280();
+
 }
 
 void get_bme280() {
