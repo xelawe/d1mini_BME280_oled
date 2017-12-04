@@ -65,7 +65,7 @@ void setup() {
 
   init_ota(gv_hostname);
 
-  oled.print("BME280");
+  oled.print("BME280 ");
   oled.display();   // Display what's in the buffer (splashscreen)
   bool status = bme.begin(0x76);
   if (!status) {
@@ -76,7 +76,7 @@ void setup() {
     oled.println("OK");
   }
   oled.display();   // Display what's in the buffer (splashscreen)  
-  delay(100); // let sensor boot up
+  delay(500); // let sensor boot up
 
   do_sensor();
   display_data();
