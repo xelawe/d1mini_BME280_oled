@@ -58,10 +58,10 @@ void setup() {
 
   wifi_init(gv_hostname);
 
-  oled.clear(PAGE); // Clear the display's internal memory
-  oled.clear(ALL);  // Clear the library's display buffer
-  oled.setFontType(0); // set font type 0, please see declaration in SFE_MicroOLED.cpp
-  oled.setCursor(0, 0); // points cursor to x=0 y=0
+  //oled.clear(PAGE); // Clear the display's internal memory
+  //oled.clear(ALL);  // Clear the library's display buffer
+  //oled.setFontType(0); // set font type 0, please see declaration in SFE_MicroOLED.cpp
+  //oled.setCursor(0, 0); // points cursor to x=0 y=0
   oled.println("WiFi OK");
   oled.display();   // Display what's in the buffer (splashscreen)
 
@@ -77,6 +77,7 @@ void setup() {
   delay(100); // let sensor boot up
 
   do_sensor();
+  display_data();
   gv_TickMeas = false;
   TickMeas.attach(10, HandleTickMeas);
 }
